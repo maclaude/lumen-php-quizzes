@@ -12,41 +12,17 @@
 
 <div class="row">
 
-    <div class="col-sm-4">
-        <h3 class="text-blue">Titre 1</h3>
-        <h5>Sous titre</h5>
-        <p>by author name</p>
-    </div>
-
-    <div class="col-sm-4">
-        <h3 class="text-blue">Titre 2</h3>
-        <h5>Sous titre</h5>
-        <p>by author name</p>
-    </div>
-
-    <div class="col-sm-4">
-        <h3 class="text-blue">Titre 3</h3>
-        <h5>Sous titre</h5>
-        <p>by author name</p>
-    </div>
-
-    <div class="col-sm-4">
-        <h3 class="text-blue">Titre 4</h3>
-        <h5>Sous titre</h5>
-        <p>by author name</p>
-    </div>
-
-    <div class="col-sm-4">
-        <h3 class="text-blue">Titre 5</h3>
-        <h5>Sous titre</h5>
-        <p>by author name</p>
-    </div>
-
-    <div class="col-sm-4">
-        <h3 class="text-blue">Titre 6</h3>
-        <h5>Sous titre</h5>
-        <p>by author name</p>
-    </div>
+    <?php foreach($quizzes as $quiz): ?>
+        <div class="col-sm-4">
+            <h3 class="text-blue"><?= $quiz->title ?></h3>
+            <h5><?= $quiz->description ?></h5>
+            <p>
+                by <?php $appUserForCurrentQuiz = $appUsers->firstWhere('id',$quiz->app_users_id);
+                echo $appUserForCurrentQuiz->firstname .' '. $appUserForCurrentQuiz->lastname;?>
+            </p>
+        </div>
+    <?php endforeach ?>
+ 
 </div>
 
 <?= view('layout/footer') ?>

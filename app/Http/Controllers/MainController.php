@@ -2,6 +2,13 @@
 
 namespace App\Http\Controllers;
 
+// Importation de ma classe DB
+use Illuminate\Support\Facades\DB;
+
+// Importation des mes models
+use App\Model\Quiz;
+use App\Model\AppUser;
+
 class MainController extends Controller
 {
     /**
@@ -16,6 +23,13 @@ class MainController extends Controller
 
     public function home()
     {
-        return view('home');
+        $quizzes = Quiz::all();
+        $appUsers = AppUser::all();
+        dump($appUsers);
+
+        return view('home', [
+            'quizzes' => $quizzes,
+            'appUsers' => $appUsers
+        ]);
     }
 }
