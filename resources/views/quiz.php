@@ -2,120 +2,44 @@
 <?= view('layout/nav') ?>
     
 <div class="row">
-    <h2> Le chocolat - I 
+    <h2> <?= $quiz->title ?>
         <span class="badge badge-pill badge-secondary">xx questions</span>
     </h2>
 </div>
 
 <div class="row">
     <h4> 
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+        <?= $quiz->description ?>
     </h4>
 </div>
 
 <div class="row">
-    <p>by author name</p>
+    <p>
+        <?php $appUserForCurrentQuiz = $appUsers->firstWhere('id',$quiz->app_users_id);
+        echo $appUserForCurrentQuiz->firstname .' '. $appUserForCurrentQuiz->lastname;?>
+    </p>
 </div>
 
 <div class="row">
 
-    <div class="col-sm-3 border p-0">
+    <?php foreach($questions as $question): ?>
+        <div class="col-sm-3 border p-0 m-4" >
 
-        <span class="badge badge-success float-right mt-2 mr-2">Débutant</span>
+            <span class="badge badge-success float-right mt-2 mr-2">Débutant</span>
 
-        <div class="p-3 background-grey">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
+            <div class="p-3 background-grey">
+                <?= $question->question ?>
+            </div>
+            <div class="p-3 question-answer-block">
+                <ul>
+                    <li>1. Lorem ipsum </li>
+                    <li>2. Lorem ipsum </li>
+                    <li>3. Lorem ipsum </li>
+                    <li>d. La réponse D </li>
+                </ul> 
+            </div>
         </div>
-        <div class="p-3 question-answer-block">
-            <ul>
-                <li>1. Lorem ipsum </li>
-                <li>2. Lorem ipsum </li>
-                <li>3. Lorem ipsum </li>
-                <li>d. La réponse D </li>
-            </ul> 
-        </div>
-    </div>
-
-    <div class="col-sm-3 offset-sm-1 border p-0">
-        <span class="badge badge-warning float-right mt-2 mr-2">Confirmé</span>
-        <div class="p-3 background-grey"> 
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-        </div>
-        <div class="p-3 question-answer-block">
-            <ul>
-                <li>1. Lorem ipsum </li>
-                <li>2. Lorem ipsum </li>
-                <li>3. Lorem ipsum </li>
-                <li>d. La réponse D </li>
-            </ul> 
-        </div>
-    </div>
-
-    <div class="col-sm-3 offset-sm-1 border p-0">
-        <span class="badge badge-danger float-right mt-2 mr-2">Expert</span>
-        <div class="p-3 background-grey">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-        </div>
-        <div class="p-3 question-answer-block">
-            <ul>
-                <li>1. Lorem ipsum </li>
-                <li>2. Lorem ipsum </li>
-                <li>3. Lorem ipsum </li>
-                <li>d. La réponse D </li>
-            </ul> 
-        </div>
-    </div>
-    
-</div>
-
-<div class="row mt-3">
-
-    <div class="col-sm-3 border p-0">
-
-        <span class="badge badge-success float-right mt-2 mr-2">Débutant</span>
-
-        <div class="p-3 background-grey">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-        </div>
-        <div class="p-3 question-answer-block">
-            <ul>
-                <li>1. Lorem ipsum </li>
-                <li>2. Lorem ipsum </li>
-                <li>3. Lorem ipsum </li>
-                <li>d. La réponse D </li>
-            </ul> 
-        </div>
-    </div>
-
-    <div class="col-sm-3 offset-sm-1 border p-0">
-        <span class="badge badge-warning float-right mt-2 mr-2">Confirmé</span>
-        <div  class="p-3 background-grey"> 
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-        </div>
-        <div class="p-3 question-answer-block">
-            <ul>
-                <li>1. Lorem ipsum </li>
-                <li>2. Lorem ipsum </li>
-                <li>3. Lorem ipsum </li>
-                <li>d. La réponse D </li>
-            </ul> 
-        </div>
-    </div>
-
-    <div class="col-sm-3 offset-sm-1 border p-0">
-        <span class="badge badge-danger float-right mt-2 mr-2">Expert</span>
-        <div  class="p-3 background-grey">
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr. ?
-        </div>
-        <div class="p-3 question-answer-block">
-            <ul>
-                <li>1. Lorem ipsum </li>
-                <li>2. Lorem ipsum </li>
-                <li>3. Lorem ipsum </li>
-                <li>d. La réponse D </li>
-            </ul> 
-        </div>
-    </div>
+    <?php endforeach ?>
     
 </div>
 
