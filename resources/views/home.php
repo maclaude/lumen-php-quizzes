@@ -14,7 +14,7 @@
 
     <?php foreach($quizzes as $quiz): ?>
         <div class="col-sm-4">
-            <h3 class="text-blue"><?= $quiz->title ?></h3>
+            <h3 class="text-blue"><a href="<?= route('quiz', ['id' => $quiz->id]) ?>"><?= $quiz->title ?></a></h3>
             <h5><?= $quiz->description ?></h5>
             <p>
                 by <?php $appUserForCurrentQuiz = $appUsers->firstWhere('id',$quiz->app_users_id);

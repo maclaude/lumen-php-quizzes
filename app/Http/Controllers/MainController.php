@@ -25,7 +25,6 @@ class MainController extends Controller
     {
         $quizzes = Quiz::all();
         $appUsers = AppUser::all();
-        dump($appUsers);
 
         return view('home', [
             'quizzes' => $quizzes,
