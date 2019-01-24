@@ -3,7 +3,7 @@
     
 <div class="row">
     <h2> <?= $quiz->title ?>
-        <span class="badge badge-pill badge-secondary">xx questions</span>
+        <span class="badge badge-pill badge-secondary"><?= $count ?> questions</span>
     </h2>
 </div>
 
@@ -25,7 +25,10 @@
     <?php foreach($questions as $question): ?>
         <div class="col-sm-3 border p-0 m-4" >
 
-            <span class="badge badge-success float-right mt-2 mr-2">Débutant</span>
+            <span class="badge badge-success float-right mt-2 mr-2">
+                <?php $levelName = $levels->firstWhere('id',$question->levels_id);
+                echo $levelName->name;?>
+            </span>
 
             <div class="p-3 background-grey">
                 <?= $question->question ?>
