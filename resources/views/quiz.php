@@ -24,7 +24,17 @@
 
     <?php foreach($questions as $question): ?>
         <div class="col-sm-3 border p-0 m-4" >
-            <span class="badge badge-success float-right mt-2 mr-2">
+            <?php 
+                if ($question->levels_id == 1) {
+                    $badgeClasse = 'badge-success';
+                } elseif ($question->levels_id == 2) {
+                    $badgeClasse = 'badge-warning';
+                } elseif ($question->levels_id == 3) {
+                    $badgeClasse = 'badge-danger';
+                }
+            ?>
+
+            <span class="badge <?= $badgeClasse ?> float-right mt-2 mr-2">
                 <?php $levelName = $levels->firstWhere('id',$question->levels_id);
                 echo $levelName->name;?>
             </span>
