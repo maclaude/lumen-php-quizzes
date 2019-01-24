@@ -31,6 +31,8 @@
                 </div>
                 <button href="" class="btn btn-primary" type="submit" role="button">Inscription</button>
                 <a href="<?= route('signin')?>" class="btn btn-primary" role="button">J'ai déjà un compte</a>
+                <!-- A retirer lorsque la connexion sera effective -->
+                <a class="btn btn-primary" href="<?= route('account') ?>" role="button">Accès au compte sans connexion (beta)</a>
             </form>
         </div>
 </div>

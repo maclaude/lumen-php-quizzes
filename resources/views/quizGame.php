@@ -43,13 +43,16 @@
                 <?= $question->question ?>
             </div>
             <div class="p-3 question-answer-block">
-                <ul>
-                    <?php $responses =  App\Model\Answer::where('questions_id', $question->id)->get();
-                        foreach($responses as $response) {
-                            echo '<li>'.$response->description.'</li>';
-                        };
-                    ?>
-                </ul> 
+
+            <?php $responses =  App\Model\Answer::where('questions_id', $question->id)->get();
+                foreach($responses as $response): ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option<?= $response->id ?>">
+                        <label class="form-check-label" for="exampleRadios1">
+                            <?= $response->description ?>
+                        </label> 
+                    </div>
+                <?php endforeach ?>         
             </div>
         </div>
     <?php endforeach ?>

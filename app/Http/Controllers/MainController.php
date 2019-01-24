@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// Importation de ma classe DB
-use Illuminate\Support\Facades\DB;
-
 // Importation des mes models
 use App\Model\Quiz;
 use App\Model\AppUser;

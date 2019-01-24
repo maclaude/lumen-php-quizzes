@@ -31,7 +31,24 @@ class QuizController extends Controller
         $count = Question::where('quizzes_id', $id)->count();
         $levels = Level::all();
 
-        return view('quiz', [
+        return view('quiz', 'quizGame', [
+            'quiz' => $quiz,
+            'appUsers' => $appUsers,
+            'questions' => $questions,
+            'count' => $count,
+            'levels' => $levels,
+        ]);
+    }
+    
+    public function quizgame($id)
+    {
+        $quiz = Quiz::find($id);
+        $appUsers = AppUser::all();
+        $questions = DB::select("SELECT * FROM questions WHERE quizzes_id = $id");
+        $count = Question::where('quizzes_id', $id)->count();
+        $levels = Level::all();
+
+        return view('quizGame', [
             'quiz' => $quiz,
             'appUsers' => $appUsers,
             'questions' => $questions,

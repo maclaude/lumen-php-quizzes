@@ -17,10 +17,13 @@
                     </label>
                     <input class="form-control" id="field-password" name="password" type="password" placeholder="Mot de passe">
                 </div>
-                <button href="" class="btn btn-primary" type="submit" role="button">Connexion</button>
+                <button href="#" class="btn btn-primary" type="submit" role="button">Connexion</button>
                 <a href="<?= route('signup')?>" class="btn btn-primary" role="button">Je n'ai pas de compte</a>
+                <!-- A retirer lorsque la connexion sera effective -->
+                <a class="btn btn-primary" href="<?= route('account') ?>" role="button">Accès au compte sans connexion (beta)</a>
             </form>
         </div>
+        
 </div>
 
 <?= view('layout/footer') ?>

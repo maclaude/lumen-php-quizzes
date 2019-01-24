@@ -54,3 +54,13 @@ $router->get('/logout', [
     'as' => 'logout',
     'uses' => 'UserController@logout',
 ]);
+
+$router->get('/account', [
+    'as' => 'account',
+    'uses' => 'UserController@profile'
+]);
+
+$router->get('quiz/{id}', [
+    'as' => 'quizgame',
+    'uses' => 'QuizController@quizGame'
+]);

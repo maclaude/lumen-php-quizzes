@@ -23,13 +23,33 @@ body{
     font-style: italic;
 }
 
-.test
+.quizz_bloc
 {
     background-color: RGBA(35, 45, 49, 0.64);
     margin: 0 -15px;
 }
-
-
+button
+{
+    background-color: white;
+    border-radius: 5px;
+}
+a
+{
+    color: inherit;
+}
+#login
+{
+    display: flex;
+    justify-content: center;
+}
+.field-info
+{
+    font-size: 0.6em;
+}
+.bg-white
+{
+    color: black;
+}
 
 
 

@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+// Importation des mes models
+use App\Model\Quiz;
+use App\Model\AppUser;
+
 class UserController extends Controller
 {
     /**
@@ -27,5 +31,16 @@ class UserController extends Controller
     public function logout()
     {
         return view('signin');
+    }
+
+    public function profile()
+    {
+        $quizzes = Quiz::all();
+        $appUsers = AppUser::all();
+
+        return view('userAccount', [
+            'quizzes' => $quizzes,
+            'appUsers' => $appUsers
+        ]);
     }
 }
