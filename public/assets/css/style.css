@@ -1,60 +1,103 @@
-body{
-    background-image: url(../img/rachel-722081-unsplash.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    font-family: 'Roboto', sans-serif;
-    /* overflow-x: hidden; */
-    color: white;
-}
-.quizz_cards
-{
-    background-size: cover;
-    background-position: center;
-    height: 40vh;
-    text-align: center;
-}
-.quizz_title
-{
-    color : white;
-}
-.quizz_under-title
-{
-    font-style: italic;
+body {
+  background-image: url(../img/rachel-722081-unsplash.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  font-family: 'Roboto', sans-serif;
+  /* overflow-x: hidden; */
+  color: white;
 }
 
-.quizz_bloc
-{
-    background-color: RGBA(35, 45, 49, 0.64);
-    margin: 0 -15px;
-}
-button
-{
-    background-color: white;
-    border-radius: 5px;
-}
-a
-{
-    color: inherit;
-}
-#login
-{
-    display: flex;
-    justify-content: center;
-}
-.field-info
-{
-    font-size: 0.6em;
-}
-.bg-white
-{
-    color: black;
+.quizz_cards {
+  background-size: cover;
+  background-position: center;
+  height: 40vh;
+  text-align: center;
 }
 
+.quizz_title {
+  color: white;
+}
 
+.quizz_under-title {
+  font-style: italic;
+}
 
+.quizz_bloc {
+  background-color: RGBA(35, 45, 49, 0.64);
+  margin: 0 -15px;
+}
 
+button {
+  background-color: white;
+  border-radius: 5px;
+}
 
+a {
+  color: inherit;
+}
 
+#login {
+  display: flex;
+  justify-content: center;
+}
 
+.field-info {
+  font-size: 0.6em;
+}
 
+.bg-white {
+  color: black;
+}
+
+.color_1 {
+  background-color: orange;
+}
+
+.color_2 {
+  background-color: gray;
+  color: white;
+}
+
+.color_3 {
+  background-color: red;
+  color: white;
+}
+
+.color_4 {
+  background-color: beige;
+}
+
+.color_5 {
+  background-color: brown;
+  color: white;
+}
+
+.color_6 {
+  background-color: yellow;
+}
+
+.color_7 {
+  background-color: green;
+  color: white;
+}
+
+.color_8 {
+  background-color: purple;
+  color:white;       
+}
+
+.color_9 {
+  background-color: blue;
+  color: white;
+}
+
+.btn
+{
+  border: none;
+}
+footer{
+    text-align :center;
+    margin-top: 30px;
+    font-size: 0.7em;
+}
