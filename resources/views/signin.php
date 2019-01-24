@@ -1,30 +1,25 @@
 <?= view('layout/header') ?>
 <?= view('layout/nav') ?>
 
-<div class="row">
+<div>
     <h2>Se connecter</h2>
     <div id="login">
-
-        <form action="" id="login-form" method="post" autocomplete="off">
-        <div class="field">
-            <label class="field-label" for="field-usermail">
-                Adresse mail
-            </label>
-            <input class="field-input" id="field-usermail" name="usermail" type="text" placeholder="Adresse mail"
-                data-kwimpalastatus="alive" data-kwimpalaid="1548248032175-2">
-            <p class="field-info">Obligatoire</p>
-        </div>
-            <div class="field">
-            <label class="field-label" for="field-password">
-                Mot de passe
-            </label>
-            <input class="field-input" id="field-password" name="password" type="password" placeholder="Mot de passe" data-kwimpalastatus="alive" data-kwimpalaid="1548248032175-3">
-            <p class="field-info">Obligatoire - doit contenir au minimum 3 caractères</p>
-            </div>
-            <div id="errors"></div>
-            <button id="login-submit">Connexion</button>
-            <button id="signup-link"><a href="<?= route('signup') ?>">Je n'ai pas de compte</a></button>
-        </form>
+            <form action="" id="login-form" method="post" autocomplete="off">
+                <div class="form-group">
+                    <label class="field-label" for="field-usermail">
+                        Adresse mail
+                    </label>
+                    <input class="form-control" id="field-usermail" name="usermail" type="text" placeholder="Votre adresse email">
+                </div>
+                <div class="form-group">
+                    <label class="field-label" for="field-password">
+                        Mot de passe
+                    </label>
+                    <input class="form-control" id="field-password" name="password" type="password" placeholder="Mot de passe">
+                </div>
+                <button href="" class="btn btn-primary" type="submit" role="button">Connexion</button>
+                <a href="<?= route('signup')?>" class="btn btn-primary" role="button">Je n'ai pas de compte</a>
+            </form>
         </div>
 </div>
 
