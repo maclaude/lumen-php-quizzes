@@ -1,0 +1,40 @@
+body{
+    background-image: url(../img/rachel-722081-unsplash.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    font-family: 'Roboto', sans-serif;
+    /* overflow-x: hidden; */
+    color: white;
+}
+.quizz_cards
+{
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    text-align: center;
+}
+.quizz_title
+{
+    color : white;
+}
+.quizz_under-title
+{
+    font-style: italic;
+}
+
+.test
+{
+    background-color: RGBA(35, 45, 49, 0.64);
+    margin: 0 -15px;
+}
+
+
+
+
+
+
+
+
+
+
