@@ -15,7 +15,7 @@
 
 <div class="row">
     <p>
-        <?php $appUserForCurrentQuiz = $appUsers->firstWhere('id',$quiz->app_users_id);
+        <?php $appUserForCurrentQuiz = $users->firstWhere('id',$quiz->app_users_id);
         echo $appUserForCurrentQuiz->firstname .' '. $appUserForCurrentQuiz->lastname;?>
     </p>
 </div>

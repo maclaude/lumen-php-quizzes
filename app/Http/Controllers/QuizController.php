@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\DB;
-
 use App\Model\Quiz;
-use App\Model\AppUser;
+use App\Model\User;
 use App\Model\Question;
 use App\Model\Level;
 
@@ -23,34 +21,28 @@ class QuizController extends Controller
         //
     }
 
-    public function quiz($id)
+    public function list()
     {
-        $quiz = Quiz::find($id);
-        $appUsers = AppUser::all();
-        $questions = DB::select("SELECT * FROM questions WHERE quizzes_id = $id");
-        $count = Question::where('quizzes_id', $id)->count();
-        $levels = Level::all();
+        $quizzes = Quiz::all();
+        $users = User::all();
 
-        return view('quiz', 'quizGame', [
-            'quiz' => $quiz,
-            'appUsers' => $appUsers,
-            'questions' => $questions,
-            'count' => $count,
-            'levels' => $levels,
+        return view('quiz/list', [
+            'quizzes' => $quizzes,
+            'users' => $users
         ]);
     }
-    
-    public function quizgame($id)
+
+    public function show($id)
     {
         $quiz = Quiz::find($id);
-        $appUsers = AppUser::all();
-        $questions = DB::select("SELECT * FROM questions WHERE quizzes_id = $id");
+        $users = User::all();
+        $questions = Question::where('quizzes_id', '=', $id)->get();
         $count = Question::where('quizzes_id', $id)->count();
         $levels = Level::all();
 
-        return view('quizGame', [
+        return view('quiz/show', [
             'quiz' => $quiz,
-            'appUsers' => $appUsers,
+            'users' => $users,
             'questions' => $questions,
             'count' => $count,
             'levels' => $levels,

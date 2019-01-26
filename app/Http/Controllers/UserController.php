@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 // Importation des mes models
 use App\Model\Quiz;
-use App\Model\AppUser;
+use App\Model\User;
 
 class UserController extends Controller
 {
@@ -20,27 +20,27 @@ class UserController extends Controller
 
     public function signup()
     {
-        return view('signup');
+        return view('user/signup');
     }
 
     public function signin()
     {
-        return view('signin');
+        return view('user/signin');
     }
 
     public function logout()
     {
-        return view('signin');
+        return view('user/signin');
     }
 
     public function profile()
     {
         $quizzes = Quiz::all();
-        $appUsers = AppUser::all();
+        $users = User::all();
 
-        return view('userAccount', [
+        return view('user/profile', [
             'quizzes' => $quizzes,
-            'appUsers' => $appUsers
+            'users' => $users
         ]);
     }
 }

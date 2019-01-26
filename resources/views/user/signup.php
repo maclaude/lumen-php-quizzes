@@ -30,9 +30,9 @@
                     <input class="form-control" id="field-password" name="password" type="password" placeholder="Mot de passe">
                 </div>
                 <button href="" class="btn btn-primary" type="submit" role="button">Inscription</button>
-                <a href="<?= route('signin')?>" class="btn btn-primary" role="button">J'ai déjà un compte</a>
+                <a href="<?= route('user_signin')?>" class="btn btn-primary" role="button">J'ai déjà un compte</a>
                 <!-- A retirer lorsque la connexion sera effective -->
-                <a class="btn btn-primary" href="<?= route('account') ?>" role="button">Accès au compte sans connexion (beta)</a>
+                <a class="btn btn-primary" href="<?= route('user_profile') ?>" role="button">Accès au compte sans connexion (beta)</a>
             </form>
         </div>
 </div>

@@ -16,51 +16,46 @@
 // });
 
 $router->get('/', [
-    'as' => 'home',
-    'uses' => 'MainController@home',
+    'as' => 'quiz_list',
+    'uses' => 'QuizController@list',
 ]);
 
 $router->get('/quiz/{id}', [
-    'as' => 'quiz',
-    'uses' => 'QuizController@quiz'
+    'as' => 'quiz_show',
+    'uses' => 'QuizController@show'
 ]);
 
 $router->post('/quiz/{id}', [
-    'as' => 'quiz',
+    'as' => 'quiz_show',
     'uses' => 'QuizController@quiz'
 ]);
 
 $router->get('/signup', [
-    'as' => 'signup',
+    'as' => 'user_signup',
     'uses' => 'UserController@signup',
 ]);
  
 $router->post('/signup', [
-    'as' => 'signup',
+    'as' => 'user_signup',
     'uses' => 'UserController@signup',
 ]);
 
 $router->get('/signin', [
-    'as' => 'signin',
+    'as' => 'user_signin',
     'uses' => 'UserController@signin',
 ]);
  
 $router->post('/signin', [
-    'as' => 'signin',
+    'as' => 'user_signin',
     'uses' => 'UserController@signin',
 ]);
 
 $router->get('/logout', [
-    'as' => 'logout',
+    'as' => 'user_logout',
     'uses' => 'UserController@logout',
 ]);
 
 $router->get('/account', [
-    'as' => 'account',
+    'as' => 'user_profile',
     'uses' => 'UserController@profile'
-]);
-
-$router->get('quiz/{id}', [
-    'as' => 'quizgame',
-    'uses' => 'QuizController@quizGame'
 ]);
