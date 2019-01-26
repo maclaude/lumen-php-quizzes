@@ -12,7 +12,7 @@
 
 <div class="row">
 
-    <?php foreach($quizzes as $quiz): ?>
+    <?php foreach ($quizzes as $quiz) : ?>
 
         <div class="col-4 quizz_cards" style="background-image: url(../public/assets/img/<?= $quiz->id ?>.jpg)">
 
@@ -25,7 +25,7 @@
                 </p>
                 <div>   
                     <?php $quizTags =  App\Model\QuizTags::where('quizzes_id', $quiz->id)->get(); 
-                        foreach($quizTags as $quizTag):
+                        foreach ($quizTags as $quizTag) :
                             $tags = App\Model\Tag::where('id', $quizTag->tags_id)->get();
                                 foreach ($tags as $tag) {
                                     echo '<a class="btn btn-light btn-sm mr-1 color_'.$tag->id.'" href="#" >'.$tag->name.'</a>';

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+// Importation des mes models
 use App\Model\Quiz;
 use App\Model\User;
 use App\Model\Question;
+use App\Model\Answer;
 use App\Model\Level;
 
 class QuizController extends Controller
@@ -35,17 +35,39 @@ class QuizController extends Controller
     public function show($id)
     {
         $quiz = Quiz::find($id);
-        $users = User::all();
+        $user = User::find($quiz->app_users_id);
         $questions = Question::where('quizzes_id', '=', $id)->get();
+        $questionAnswerList = $this->getRandomizedAnswers($questions);
         $count = Question::where('quizzes_id', $id)->count();
         $levels = Level::all();
+        
+        // initialisation de l'array vide.
+        $levelList = [];
+        // Indexation de l'array avec la clé primaire (index) de chaque niveau et le nom comme valeur
+        foreach($levels as $level) {
+            $levelList[$level->id] = $level->name;
+        }
 
         return view('quiz/show', [
             'quiz' => $quiz,
-            'users' => $users,
+            'user' => $user,
             'questions' => $questions,
+            'questionAnswerList' => $questionAnswerList,
             'count' => $count,
-            'levels' => $levels,
+            'levelList' => $levelList
         ]);
+    }
+
+    public function getRandomizedAnswers($questions)
+    {
+        $questionAnswerList = [];
+
+        foreach($questions as $question) {
+            $answers = Answer::where('questions_id', '=', $question->id)->get()->shuffle();
+
+            $questionAnswerList[$question->id]= $answers;
+        }
+        
+        return $questionAnswerList;
     }
 }
