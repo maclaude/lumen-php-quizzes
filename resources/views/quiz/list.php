@@ -20,8 +20,7 @@
                 <h3><a class="quizz_title" href="<?= route('quiz_show', ['id' => $quiz->id]) ?>"><?= $quiz->title ?></a></h3>
                 <h5  class="quizz_under-title"><?= $quiz->description ?></h5>
                 <p>
-                    by <?php $appUserForCurrentQuiz = $users->firstWhere('id',$quiz->app_users_id);
-                    echo $appUserForCurrentQuiz->firstname .' '. $appUserForCurrentQuiz->lastname;?>
+                    by <?= $quiz->user->firstname . ' ' . $quiz->user->lastname ?>
                 </p>
                 <div>   
                     <?php $quizTags =  App\Model\QuizTags::where('quizzes_id', $quiz->id)->get(); 

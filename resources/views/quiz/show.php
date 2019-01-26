@@ -15,7 +15,7 @@
 
 <div class="row">
     <p>
-        <?= $user->firstname .' '. $user->lastname; ?>
+        <?= $quiz->user->firstname .' '. $quiz->user->lastname; ?>
     </p>
 </div>
 

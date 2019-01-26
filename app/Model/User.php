@@ -31,4 +31,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    // Jointure ORM du champ FK `app_users_id` avec le model Quiz
+    public function quizzes()
+    {
+        return $this->hasMany('App\Model\Quiz', 'app_users_id');
+    }
 }

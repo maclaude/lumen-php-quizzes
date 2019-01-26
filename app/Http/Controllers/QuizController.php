@@ -24,18 +24,18 @@ class QuizController extends Controller
     public function list()
     {
         $quizzes = Quiz::all();
-        $users = User::all();
+        // $users = User::all();
 
         return view('quiz/list', [
             'quizzes' => $quizzes,
-            'users' => $users
+            // Grâce à la jointure plus besoin de retourner les users car ils sont liés à la table quizzes
+            // 'users' => $users
         ]);
     }
 
     public function show($id)
     {
         $quiz = Quiz::find($id);
-        $user = User::find($quiz->app_users_id);
         $questions = Question::where('quizzes_id', '=', $id)->get();
         $questionAnswerList = $this->getRandomizedAnswers($questions);
         $count = Question::where('quizzes_id', $id)->count();
@@ -50,7 +50,6 @@ class QuizController extends Controller
 
         return view('quiz/show', [
             'quiz' => $quiz,
-            'user' => $user,
             'questions' => $questions,
             'questionAnswerList' => $questionAnswerList,
             'count' => $count,
