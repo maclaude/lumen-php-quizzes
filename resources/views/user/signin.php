@@ -17,6 +17,19 @@
                     </label>
                     <input class="form-control" id="field-password" name="password" type="password" placeholder="Mot de passe">
                 </div>
+
+                <?php if (!empty($errorList)) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                        <?php foreach ($errorList as $currentError) : ?>
+                            <?= $currentError ?><br>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                
                 <button href="#" class="btn btn-primary" type="submit" role="button">Connexion</button>
                 <a href="<?= route('user_signup')?>" class="btn btn-primary" role="button">Je n'ai pas de compte</a>
                 <!-- A retirer lorsque la connexion sera effective -->
