@@ -53,7 +53,11 @@ class QuizController extends Controller
         $questionAnswerList = [];
 
         foreach($questions as $question) {
-            $answers = Answer::where('questions_id', '=', $question->id)->get()->shuffle();
+            // Sans jointure : 
+            // $answers = Answer::where('questions_id', '=', $question->id)->get()->shuffle();
+
+            // Avec jointure:
+            $answers = $question->answers->shuffle();
 
             $questionAnswerList[$question->id]= $answers;
         }
