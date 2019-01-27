@@ -34,7 +34,7 @@
             ?>
 
             <span class="badge <?= $badgeClasse ?> float-right mt-2 mr-2">
-                <?= $levelList[$question->levels_id] ?>
+                <?= $question->level->name ?>
             </span>
 
             <div class="p-3 background-grey">

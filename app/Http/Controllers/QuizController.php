@@ -39,21 +39,12 @@ class QuizController extends Controller
         $questions = Question::where('quizzes_id', '=', $id)->get();
         $questionAnswerList = $this->getRandomizedAnswers($questions);
         $count = Question::where('quizzes_id', $id)->count();
-        $levels = Level::all();
-        
-        // initialisation de l'array vide.
-        $levelList = [];
-        // Indexation de l'array avec la clé primaire (index) de chaque niveau et le nom comme valeur
-        foreach($levels as $level) {
-            $levelList[$level->id] = $level->name;
-        }
 
         return view('quiz/show', [
             'quiz' => $quiz,
             'questions' => $questions,
             'questionAnswerList' => $questionAnswerList,
             'count' => $count,
-            'levelList' => $levelList
         ]);
     }
 
