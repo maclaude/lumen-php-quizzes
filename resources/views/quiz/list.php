@@ -23,13 +23,9 @@
                     by <?= $quiz->user->firstname . ' ' . $quiz->user->lastname ?>
                 </p>
                 <div>   
-                    <?php $quizTags =  App\Model\QuizTags::where('quizzes_id', $quiz->id)->get(); 
-                        foreach ($quizTags as $quizTag) :
-                            $tags = App\Model\Tag::where('id', $quizTag->tags_id)->get();
-                                foreach ($tags as $tag) {
-                                    echo '<a class="btn btn-light btn-sm mr-1 color_'.$tag->id.'" href="#" >'.$tag->name.'</a>';
-                                };
-                        endforeach ?>
+                    <?php foreach ($quiz->tags as $tag) : ?>
+                        <a class="btn btn-light btn-sm mr-1 color_<?= $tag->id ?>" href="#" ><?= $tag->name ?></a>
+                    <?php endforeach ?>
                 </div>
             </div>
 
