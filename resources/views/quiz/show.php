@@ -40,18 +40,42 @@
             <div class="p-3 background-grey">
                 <?= $question->question ?>
             </div>
-            <div class="p-3 question-answer-block">
-                <ul>
-                    <?php foreach ($questionAnswerList[$question->id] as $answer) : ?>
-                        <li>
-                            <?= $answer->description ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul> 
-            </div>
+
+            <?php if (!$isConnected) : ?>
+                <div class="p-3 question-answer-block">
+                    <ul>
+                        <?php foreach ($questionAnswerList[$question->id] as $answer) : ?>
+                            <li>
+                                <?= $answer->description ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul> 
+                </div>
+            <?php endif; ?>
+
+            <?php if ($isConnected) : ?>
+                <div class="p-3 question-answer-block">
+                    <?php $responses =  App\Model\Answer::where('questions_id', $question->id)->get();
+                        foreach ($responses as $response) : ?>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option<?= $response->id ?>">
+                                <label class="form-check-label" for="exampleRadios1">
+                                    <?= $response->description ?>
+                                </label> 
+                            </div>
+                    <?php endforeach ?>         
+                </div>
+            <?php endif; ?>
+            
         </div>
     <?php endforeach ?>
-    
+
 </div>
+
+<?php if ($isConnected) : ?>
+    <div class="row mt-3">
+        <input type="submit" class="mx-auto btn btn-primary background-blue btn-lg" value="Voir mon score"/>
+    </div>
+<?php endif ?>
 
 <?= view('layout/footer') ?>

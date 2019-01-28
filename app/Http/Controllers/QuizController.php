@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 // Importation des mes models
 use App\Model\Quiz;
-use App\Model\User;
 use App\Model\Question;
-use App\Model\Answer;
-use App\Model\Level;
+
+// Grâce aux jointures plus besoin d'importer les models User / Level / Answers car ils sont déjà liés aux tables correspondantes.
 
 class QuizController extends Controller
 {
@@ -18,18 +17,15 @@ class QuizController extends Controller
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
 
     public function list()
     {
         $quizzes = Quiz::all();
-        // $users = User::all();
 
         return view('quiz/list', [
             'quizzes' => $quizzes,
-            // Grâce à la jointure plus besoin de retourner les users car ils sont liés à la table quizzes
-            // 'users' => $users
         ]);
     }
 
@@ -53,13 +49,10 @@ class QuizController extends Controller
         $questionAnswerList = [];
 
         foreach($questions as $question) {
-            // Sans jointure : 
-            // $answers = Answer::where('questions_id', '=', $question->id)->get()->shuffle();
 
-            // Avec jointure:
             $answers = $question->answers->shuffle();
-
             $questionAnswerList[$question->id]= $answers;
+
         }
         
         return $questionAnswerList;

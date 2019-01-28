@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // Importation des mes models
 use App\Model\Quiz;
 use App\Model\User;
+use App\Utils\UserSession;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -16,25 +17,28 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
 
     public function signup(Request $request)
     {
         $errorList = [];
 
+        // Récupération des valeurs des champs du formulaire
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+        $email = $request->input('email');
+        $password = $request->input('password');
+        $passwordConfirm = $request->input('password-confirm');
+
         if ($request->isMethod('post')) {
-            // Récupération des valeurs des inputs du formulaire
-            $firstname = $request->input('firstname');
-            $lastname = $request->input('lastname');
-            $email = $request->input('email');
-            $password = $request->input('password');
 
             // Suppression des espaces avant et après la chaine de caractère
             $firstname = trim($firstname);
             $lastname = trim($lastname);
             $email = trim($email);
             $password = trim($password);
+            $passwordConfirm = trim($passwordConfirm);
 
             if (empty($firstname)) {
                 $errorList[] = 'Le prénom est vide';
@@ -56,6 +60,12 @@ class UserController extends Controller
                 $errorList[] = 'Le mot de passe doit faire au moins 8 caractères';
             }
 
+            if (empty($passwordConfirm)) {
+                $errorList[] = 'La confirmation du mot de passe est vide';
+            } elseif ($password != $passwordConfirm) {
+                $errorList[] = 'La confirmation du mot de passe n\'est pas valide';
+            }
+
             if (empty($errorList)) {
                 // Vérification si un compte avec cet email existe déjà
                 $user = User::where('email', '=', $email)->first();
@@ -74,12 +84,17 @@ class UserController extends Controller
                     $newUser->password = $hashedPassword;
                     $newUser->save();
 
-                    return redirect()->route('quiz_list');
+                    // Redirection vers la page de connexion
+                    return redirect()->route('user_signin');
                 }
             }
         }
+
         return view('user/signup', [
-            'errorList' => $errorList
+            'errorList' => $errorList,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email
         ]);
     }
 
@@ -87,26 +102,23 @@ class UserController extends Controller
     {
         $errorList = [];
 
-        if ($request->isMethod('post')) {
-            // Récupération des valeurs des inputs du formulaire
-            $email = $request->input('email');
-            $password = $request->input('password');
+        // Récupération des valeurs des champs du formulaire
+        $email = $request->input('email');
+        $password = $request->input('password');
 
+        if ($request->isMethod('post')) {
+            
             // Suppression des espaces avant et après la chaine de caractère
             $email = trim($email);
-            $assword = trim($password);
+            $password = trim($password);
 
-            if (empty($email)) {
-                $errorList[] = 'Aucun email saisi';
-            } elseif (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-                $errorList[] = 'L\'email renseigné est incorrect';
+            if (empty($email) ||
+                filter_var($email, FILTER_VALIDATE_EMAIL) === false ||
+                empty($password) ) 
+            {
+                $errorList[] = 'Identifiant et/ou mot de passe incorrect';
             }
 
-            if (empty($password)) {
-                $errorList[] = 'Aucun mot de passe saisi';
-            } elseif (strlen($password) < 8) {
-                $errorList[] = 'Le mot de passe renseigné est incorrect';
-            }
 
             if (empty($errorList)) {
                 // Vérification si un compte avec cet email existe déjà
@@ -114,35 +126,30 @@ class UserController extends Controller
 
                 if ($user) {
                     // Vérification que le mot de passe correspond au hachage
-                    if (password_verify($password, $user->password));
+                    if (password_verify($password, $user->password)) {
+                        // Connexion de l'utilisateur en session
+                        UserSession::connect($user);
+                        // Redirection vers la home
+                        return redirect()->route('quiz_list');
+                    }
 
-                    // TODO - Mise en session
-
-                    return redirect()->route('quiz_list');
                 } else {
-                    $errorList[] = 'L\'identifiant et/ou mot de passe incorrect';
+                    $errorList[] = 'Identifiant et/ou mot de passe incorrect';
                 }
             }
         }
 
         return view('user/signin', [
-            'errorList' => $errorList
+            'errorList' => $errorList,
+            'email' => $email
         ]);
     }
 
     public function logout()
     {
-        return redirect()->route('user_signin');
-    }
-
-    public function profile()
-    {
-        $quizzes = Quiz::all();
-        $users = User::all();
-
-        return view('user/profile', [
-            'quizzes' => $quizzes,
-            'users' => $users
-        ]);
+        // Deconnexion de l'utilisateur en session
+        UserSession::disconnect();
+        // Redirection vers la home
+        return redirect()->route('quiz_list');
     }
 }

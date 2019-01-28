@@ -9,7 +9,7 @@
                     <label class="field-label" for="field-usermail">
                         Adresse mail
                     </label>
-                    <input class="form-control" id="field-usermail" name="usermail" type="text" placeholder="Votre adresse email">
+                    <input class="form-control" id="field-usermail" name="email" type="text" placeholder="Votre adresse email" value="<?= $email ?>">
                 </div>
                 <div class="form-group">
                     <label class="field-label" for="field-password">
@@ -20,20 +20,14 @@
 
                 <?php if (!empty($errorList)) : ?>
                     <div class="alert alert-danger" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
                         <?php foreach ($errorList as $currentError) : ?>
                             <?= $currentError ?><br>
                         <?php endforeach; ?>
                     </div>
                 <?php endif; ?>
                 
-                <button href="#" class="btn btn-primary" type="submit" role="button">Connexion</button>
+                <button href="#" class="btn btn-success" type="submit" role="button">Connexion</button>
                 <a href="<?= route('user_signup')?>" class="btn btn-primary" role="button">Je n'ai pas de compte</a>
-                <!-- A retirer lorsque la connexion sera effective -->
-                <a class="btn btn-primary" href="<?= route('user_profile') ?>" role="button">Accès au compte sans connexion (beta)</a>
             </form>
         </div>
         

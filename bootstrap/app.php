@@ -2,6 +2,9 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+// Le session start doit être fait après l'autoload
+session_start();
+
 try {
     (new Dotenv\Dotenv(dirname(__DIR__)))->load();
 } catch (Dotenv\Exception\InvalidPathException $e) {
@@ -23,6 +26,7 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
+// Lignes ci-dessous à décommenter pour pouvoir utiliser Facades et Eloquent
 $app->withFacades();
 
 $app->withEloquent();
