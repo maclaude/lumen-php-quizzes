@@ -22,6 +22,15 @@
             </a>
         </li>
 
+        <?php if($isConnected && $isAdmin) : ?>
+        <li class="nav-item">
+            <a class="nav-link text-blue active " href="<?= route('admin_interface') ?>">
+                <i class="fas fa-user"></i>
+                Mon espace administrateur
+            </a>
+        </li>
+        <?php endif; ?>
+
         <li class="nav-item">
             <a class="nav-link text-blue" href="<?= route('user_logout') ?>">
                 <i class="fas fa-sign-out-alt"></i>

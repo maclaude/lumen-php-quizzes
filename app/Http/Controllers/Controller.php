@@ -20,6 +20,11 @@ class Controller extends BaseController
 
     public function isUserAllowed()
     {
-        // @todo
+        if(!UserSession::isConnected()) {
+            header('Location: ' . route('user_signin') . '');
+            exit();
+        } elseif(!UserSession::isAdmin()) {
+            abort(403, 'Accès non autorisé');
+        }
     }
 }

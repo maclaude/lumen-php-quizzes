@@ -30,6 +30,11 @@ $router->post('/quiz/{id}', [
     'uses' => 'QuizController@show'
 ]);
 
+$router->get('/admin', [
+    'as' => 'admin_interface',
+    'uses' => 'AdminController@interface',
+]);
+
 $router->get('/signup', [
     'as' => 'user_signup',
     'uses' => 'UserController@signup',

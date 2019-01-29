@@ -7,6 +7,8 @@ use App\Model\User;
 abstract class UserSession 
 {
     const SESSION_DATA_NAME = 'currentUser';
+    const NO_ROLE_DEFINED = 0;
+    const ROLE_ADMIN = 1;
 
     // Je connecte l'utilisateur
     public static function connect(User $user)
@@ -43,12 +45,16 @@ abstract class UserSession
     // Je récupère l'id du role de mon utilisateur
     public static function getRoleId()
     {
-        // @todo
+        if(self::isConnected()){
+            return self::getUser()->role_id;
+        }
+
+        return self::NO_ROLE_DEFINED;
     }
 
     // Je vérifie si mon utilisateur à le role d'administrateur ou non
     public static function isAdmin()
     {
-        // @todo
+        return (self::getRoleId() == self::ROLE_ADMIN);
     }
 }
