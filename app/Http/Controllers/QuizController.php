@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 // Importation des mes models
+use App\Model\Tag;
 use App\Model\Quiz;
 use App\Model\Question;
 use Illuminate\Http\Request;
@@ -27,6 +28,15 @@ class QuizController extends Controller
 
         return view('quiz/list', [
             'quizzes' => $quizzes,
+        ]);
+    }
+
+    public function listByTag($tagId)
+    {
+        $currentTag = Tag::find($tagId);
+
+        return view('quiz/listByTag', [
+            'currentTag' => $currentTag,
         ]);
     }
 

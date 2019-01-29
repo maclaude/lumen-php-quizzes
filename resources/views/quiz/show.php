@@ -19,8 +19,14 @@
     </p>
 </div>
 
+<div class="row mb-2">   
+    <?php foreach ($quiz->tags as $tag) : ?>
+        <a class="btn btn-light btn-sm mr-1 color_<?= $tag->id ?>" href="<?= route('quiz_list_by_tag', ['id' => $tag->id]) ?>" ><?= $tag->name ?></a>
+    <?php endforeach ?>
+</div>
+
 <?php if (!empty($score)) : ?>
-    <div class="alert alert-success" role="alert">
+    <div class="text-center col-3 mx-auto alert alert-success" role="alert">
         <?= 'Votre score est de ' . $score . ' / ' . $count . ''?>
     </div>
 <?php endif ?>

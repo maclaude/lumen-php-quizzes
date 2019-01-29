@@ -54,3 +54,8 @@ $router->get('/logout', [
     'as' => 'user_logout',
     'uses' => 'UserController@logout',
 ]);
+
+$router->get('/{id}', [
+    'as' => 'quiz_list_by_tag',
+    'uses' => 'QuizController@listByTag',
+]);

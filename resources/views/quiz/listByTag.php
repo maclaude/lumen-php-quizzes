@@ -12,7 +12,7 @@
 
 <div class="row">
 
-    <?php foreach ($quizzes as $quiz) : ?>
+    <?php foreach ($currentTag->quizzes as $quiz) : ?>
     <div class="col-4 mb-4">
         <div class="quizz_cards" style="background-image: url(../public/assets/img/<?= $quiz->id ?>.jpg)">
 
