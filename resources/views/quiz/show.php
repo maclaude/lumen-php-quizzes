@@ -15,7 +15,7 @@
 
 <div class="row">
     <p>
-        <?= $quiz->user->firstname .' '. $quiz->user->lastname; ?>
+        <?= $quiz->user->firstname .' '. $quiz->user->lastname ?>
     </p>
 </div>
 
@@ -44,7 +44,18 @@
                 <?= $question->level->name ?>
             </span>
 
-            <div class="p-3 background-grey">
+            <?php $questionBackground = 'background-grey' ?>
+
+            <?php if (!empty($userAnswerCorrect)) {
+                if ($userAnswerCorrect[$question->id] == true) {
+                    $questionBackground = 'alert-success';
+                } elseif ($userAnswerCorrect[$question->id] == false) {
+                    $questionBackground = 'alert-warning';
+                }
+            }
+            ?>
+            
+            <div class="p-3 <?= $questionBackground ?>">
                 <?= $question->question ?>
             </div>
 
@@ -55,7 +66,7 @@
                             <li>
                                 <?= $answer->description ?>
                             </li>
-                        <?php endforeach; ?>
+                        <?php endforeach ?>
                     </ul> 
                 </div>
             <?php endif; ?>
@@ -71,8 +82,15 @@
                             </div>
                     <?php endforeach ?>         
                 </div>
+
+                <?php if (!empty($userAnswerCorrect)) : ?>
+                    <div class="p-3 background-grey question-answer-block"> 
+                        <?= $question->anecdote ?><hr>
+                        <a href="https://fr.wikipedia.org/wiki/<?= $question->wiki ?>"> Plus d'info sur Wikipedia ici</a>
+                    </div>
+                <?php endif ?>
             
-            <?php endif; ?>
+            <?php endif ?>
             
         </div>
     <?php endforeach ?>

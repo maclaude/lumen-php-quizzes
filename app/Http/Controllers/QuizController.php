@@ -37,15 +37,23 @@ class QuizController extends Controller
         $questionAnswerList = $this->getRandomizedAnswers($questions);
         $count = Question::where('quizzes_id', $id)->count();
 
-        // Initialisation de la variable score
+        // Initialisation des variables
         $score = 0;
+        $userAnswerCorrect = [];
+        
+        if ($request->isMethod('post')) {
 
-        foreach ($questions as $question) {
-            $userAnswer = $request->input('radio-question-' . $question->id);
-            $questionAnswer = $question->answers_id;
-            if ($userAnswer == $questionAnswer) {
-                // Incrémentation à chaque fois que la réponse de l'utilisateur est bonne
-                $score += 1;
+            foreach ($questions as $question) {
+                $userAnswer = $request->input('radio-question-' . $question->id);
+                $questionAnswer = $question->answers_id;
+
+                if ($userAnswer == $questionAnswer) {
+                    // Incrémentation à chaque fois que la réponse de l'utilisateur est bonne
+                    $score += 1;
+                    $userAnswerCorrect[$question->id] = true; 
+                } else {
+                    $userAnswerCorrect[$question->id] = false; 
+                }
             }
         }
 
@@ -54,7 +62,8 @@ class QuizController extends Controller
             'questions' => $questions,
             'questionAnswerList' => $questionAnswerList,
             'count' => $count,
-            'score' => $score
+            'score' => $score,
+            'userAnswerCorrect' => $userAnswerCorrect
         ]);
     }
 
