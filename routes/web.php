@@ -27,7 +27,7 @@ $router->get('/quiz/{id}', [
 
 $router->post('/quiz/{id}', [
     'as' => 'quiz_show',
-    'uses' => 'QuizController@quiz'
+    'uses' => 'QuizController@show'
 ]);
 
 $router->get('/signup', [

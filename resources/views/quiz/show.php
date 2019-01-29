@@ -19,6 +19,13 @@
     </p>
 </div>
 
+<?php if (!empty($score)) : ?>
+    <div class="alert alert-success" role="alert">
+        <?= 'Votre score est de ' . $score . ' / ' . $count . ''?>
+    </div>
+<?php endif ?>
+
+<form action="" method="POST">
 <div class="row">
 
     <?php foreach ($questions as $question) : ?>
@@ -55,16 +62,16 @@
 
             <?php if ($isConnected) : ?>
                 <div class="p-3 question-answer-block">
-                    <?php $responses =  App\Model\Answer::where('questions_id', $question->id)->get();
-                        foreach ($responses as $response) : ?>
+                        <?php foreach ($questionAnswerList[$question->id] as $answer) : ?>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option<?= $response->id ?>">
+                                <input class="form-check-input" type="radio" name="radio-question-<?= $question->id ?>" id="radio-answer-<?= $answer->id ?>" value="<?= $answer->id ?>">
                                 <label class="form-check-label" for="exampleRadios1">
-                                    <?= $response->description ?>
+                                    <?= $answer->description ?>
                                 </label> 
                             </div>
                     <?php endforeach ?>         
                 </div>
+            
             <?php endif; ?>
             
         </div>
@@ -77,5 +84,6 @@
         <input type="submit" class="mx-auto btn btn-primary background-blue btn-lg" value="Voir mon score"/>
     </div>
 <?php endif ?>
+</form>
 
 <?= view('layout/footer') ?>
