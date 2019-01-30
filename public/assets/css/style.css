@@ -95,8 +95,13 @@ a {
 {
   border: none;
 }
+
 footer{
-    text-align :center;
-    margin-top: 30px;
-    font-size: 0.7em;
+  text-align :center;
+  margin-top: 30px;
+  font-size: 0.7em;
+}
+
+#id_modification:hover{
+  color : RGBA(189, 69, 63, 1.00);
 }

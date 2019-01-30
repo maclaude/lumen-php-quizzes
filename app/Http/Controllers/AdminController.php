@@ -134,4 +134,24 @@ class AdminController extends Controller
 
         return redirect()->route('admin_interface');
     }
+
+    public function tagCreate(Request $request) 
+    {
+        $newTag = new Tag();
+
+        $name = $request->input('name');
+
+        if ($request->isMethod('post')) {
+            $name = trim($name);
+
+            $newTag->name = $name;
+
+            $newTag->save();
+
+            // Redirection vers l'interface admin une fois la modification effectuée
+            return redirect()->route('admin_interface');
+        }
+
+        return view('admin/tagCreate');
+    }
 }

@@ -35,6 +35,21 @@ $router->get('/admin', [
     'uses' => 'AdminController@interface'
 ]);
 
+$router->get('/admin/tag/add', [
+    'as' => 'admin_tag_create',
+    'uses' => 'AdminController@tagCreate'
+]);
+
+$router->post('/admin/tag/add', [
+    'as' => 'admin_tag_create',
+    'uses' => 'AdminController@tagCreate'
+]);
+
+$router->get('/admin/tag/delete/{id}', [
+    'as' => 'admin_tag_delete',
+    'uses' => 'AdminController@tagDelete'
+]);
+
 $router->get('/admin/tag/{id}', [
     'as' => 'admin_tag',
     'uses' => 'AdminController@tag'
@@ -43,11 +58,6 @@ $router->get('/admin/tag/{id}', [
 $router->post('/admin/tag/{id}', [
     'as' => 'admin_tag',
     'uses' => 'AdminController@tag'
-]);
-
-$router->get('/admin/tag/delete/{id}', [
-    'as' => 'admin_tag_delete',
-    'uses' => 'AdminController@tagDelete'
 ]);
 
 $router->get('/admin/quiz/{id}', [

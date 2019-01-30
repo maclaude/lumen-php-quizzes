@@ -1,7 +1,10 @@
 <?= view('layout/header') ?>
 <?= view('layout/nav') ?>
 
-<h2>Liste de nos tags</h2>
+<div class="d-flex justify-content-between mb-3">
+    <h2>Liste de nos tags</h2>
+    <a href="<?= route('admin_tag_create') ?>" role="button" class="btn btn-light align-self-center">Ajouter un tag</a>
+</div>
 
 <table class="table table-hover table-striped table-dark">
     <thead>
