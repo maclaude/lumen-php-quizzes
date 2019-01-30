@@ -15,12 +15,14 @@
             </a>
         </li>
 
+        <?php if(!$isConnected) : ?>
         <li class="nav-item">
             <a class="nav-link text-blue active " href="<?= route('user_signin') ?>">
                 <i class="fas fa-user"></i>
                 Mon compte
             </a>
         </li>
+        <?php endif; ?>
 
         <?php if($isConnected && $isAdmin) : ?>
         <li class="nav-item">

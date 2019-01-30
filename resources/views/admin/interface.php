@@ -8,7 +8,6 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Name</th>
-            <th scope="col">Ajouter</th>
             <th scope="col">Modification</th>
             <th scope="col">Supprimer</th>
         </tr>
@@ -18,8 +17,7 @@
         <tr>
             <th><?= $tag->id ?></th>
             <td><?= $tag->name ?></td>
-            <th><a href="#">Ajouter</a></th>
-            <th><a href="#">Modifier</a></th>
+            <th><a href="<?= route('admin_tag', ['id' => $tag->id]) ?>">Modifier</a></th>
             <th><a href="#">Suppr.</a></th>
         </tr>
     <?php endforeach ?>
@@ -34,7 +32,7 @@
             <th scope="col">Id</th>
             <th scope="col">Titre</th>
             <th scope="col">Description</th>
-            <th scope="col">App User Id</th>      
+            <th scope="col">Auteur</th>      
             <th scope="col">Modification</th>
         </tr>
     </thead>
@@ -45,7 +43,7 @@
             <td><?= $quiz->title ?></td>
             <td><?= $quiz->description ?></td>
             <td><?= $quiz->user->firstname . ' ' . $quiz->user->lastname ?></td>
-            <td><a href="#" >Modifier</a></td>   
+            <td><a href="<?= route('admin_quiz', ['id' => $quiz->id]) ?>">Modifier</a></td>
         </tr>
     <?php endforeach ?>
     </tbody>
@@ -74,7 +72,7 @@
             <td><?= $question->wiki ?></td>
             <td><?= $question->level->name ?></td>
             <td><?= $question->answers_id ?></td>
-            <th><a href="#">Modifier</a></th>
+            <th><a href="<?= route('admin_question', ['id' => $question->id]) ?>">Modifier</a></th>
         </tr>
     <?php endforeach ?>
   </tbody>
