@@ -10,7 +10,7 @@
     </p>
 </div>
 
-<div class="row fadeIn delay-5s">
+<div class="row">
 
     <?php foreach ($quizzes as $quiz) : ?>
     <div class="col-4 mb-4">

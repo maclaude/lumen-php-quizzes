@@ -71,7 +71,7 @@
             <td><?= $question->anecdote ?></td>
             <td><?= $question->wiki ?></td>
             <td><?= $question->level->name ?></td>
-            <td><?= $question->answers_id ?></td>
+            <td><?= $question->answer->description ?></td>
             <th><a href="<?= route('admin_question', ['id' => $question->id]) ?>">Modifier</a></th>
         </tr>
     <?php endforeach ?>

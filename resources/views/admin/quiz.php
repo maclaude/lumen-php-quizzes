@@ -6,7 +6,7 @@
 	    <div id="id_modification" class="form-group">
 	        <label for="id">Quizz ID</label>
 	        <input class="form-control" type="text" placeholder="<?= $currentQuiz->id ?>" readonly>
-	        <medium id="idHelp" class="form-text ">Aucune modification possible sur l'id de la question</medium>
+	        <medium id="idHelp" class="form-text ">Aucune modification possible sur l'id du Quiz</medium>
 	    </div>
 	    <div class="form-group">
 	        <label for="title">Titre</label>
