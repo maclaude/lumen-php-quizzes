@@ -125,4 +125,13 @@ class AdminController extends Controller
             'currentTag' => $currentTag
         ]);
     }
+
+    public function tagDelete(Request $request, $id)
+    {
+        $currentTag = Tag::find($id);
+
+        $currentTag->delete();
+
+        return redirect()->route('admin_interface');
+    }
 }

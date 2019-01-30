@@ -18,7 +18,7 @@
             <th><?= $tag->id ?></th>
             <td><?= $tag->name ?></td>
             <th><a href="<?= route('admin_tag', ['id' => $tag->id]) ?>">Modifier</a></th>
-            <th><a href="#">Suppr.</a></th>
+            <th><a href="<?= route('admin_tag_delete', ['id' => $tag->id]) ?>">Supprimer</a></th>
         </tr>
     <?php endforeach ?>
     </tbody>

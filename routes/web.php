@@ -45,6 +45,11 @@ $router->post('/admin/tag/{id}', [
     'uses' => 'AdminController@tag'
 ]);
 
+$router->get('/admin/tag/delete/{id}', [
+    'as' => 'admin_tag_delete',
+    'uses' => 'AdminController@tagDelete'
+]);
+
 $router->get('/admin/quiz/{id}', [
     'as' => 'admin_quiz',
     'uses' => 'AdminController@quiz'
