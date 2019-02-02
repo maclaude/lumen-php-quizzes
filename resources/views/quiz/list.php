@@ -1,11 +1,21 @@
 <?= view('layout/header') ?>
 <?= view('layout/nav') ?>
 
-<div class="row">
+<div>
     <h2> Bienvenue sur O'Quiz <?php if($isConnected): echo $currentUser->firstname; endif; ?></h2>
     <p>
 
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    <?php if (!$isConnected): ?>
+    </p>
+    Première visite : créez-vous un <a href="<?= route('user_signup') ?>">compte</a> !
+    Vous pouvez consulter les différents quiz en cliquant sur leurs titres.</p>
+    <p>En revanche pour pouvoir y répondre, <a href="<?= route('user_signin') ?>">identifiez-vous</a>.
+    <?php endif ?>
+
+    <p> Vous pouvez consulter les quiz sur le même sujet en cliquant sur les tags.
+    </p>
+
+    <p>Let's play !
     
     </p>
 </div>
@@ -14,7 +24,7 @@
 
     <?php foreach ($quizzes as $quiz) : ?>
     <div class="col-4 mb-4">
-        <div class="quizz_cards" style="background-image: url(../public/assets/img/<?= $quiz->id ?>.jpg)">
+        <div class="quizz_cards" style="background-image: url(/img/<?= $quiz->id ?>.jpg)">
 
             <div class="quizz_bloc">
                 <h3><a class="quizz_title" href="<?= route('quiz_show', ['id' => $quiz->id]) ?>"><?= $quiz->title ?></a></h3>

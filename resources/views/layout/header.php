@@ -16,9 +16,7 @@
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="../public/assets/css/style.css" rel="stylesheet">
-        <link href="/Nova/S07/E03/s07-e03-atelier-oquiz-maclaude/public/assets/css/style.css" rel="stylesheet">
-       
+        <link href="/css/style.css" rel="stylesheet">
 
         <title>O'Quiz</title>
     </head>

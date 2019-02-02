@@ -2,14 +2,14 @@
 <?= view('layout/nav') ?>
 
 <div class="d-flex justify-content-between mb-3">
-    <h2>Liste de nos tags</h2>
+    <h2>Tags</h2>
     <a href="<?= route('admin_tag_create') ?>" role="button" class="btn btn-light align-self-center">Ajouter un tag</a>
 </div>
 
 <table class="table table-hover table-striped table-dark">
     <thead>
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Modification</th>
             <th scope="col">Supprimer</th>
@@ -27,12 +27,12 @@
     </tbody>
 </table>
 
-<h2>Liste de nos quizz</h2>
+<h2>Quizzes</h2>
 
 <table class="table table-hover table-striped table-dark">
     <thead>
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Titre</th>
             <th scope="col">Description</th>
             <th scope="col">Auteur</th>      
@@ -52,17 +52,17 @@
     </tbody>
 </table>
 
-<h2>Liste de nos questions</h2>
+<h2>Questions</h2>
 
 <table class="table table-hover table-striped table-dark">
     <thead>
         <tr>
-            <th scope="col">Id</th>
+            <th scope="col">#</th>
             <th scope="col">Questions</th>
             <th scope="col">Anecdote</th>
             <th scope="col">Wiki</th>
             <th scope="col">Level Id</th>
-            <th scope="col">Réponse Id</th>
+            <th scope="col">Réponse</th>
             <th scope="col">Modification</th>
         </tr>
     </thead>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // Importation des mes models
 use App\Model\Tag;
 use App\Model\Quiz;
+use App\Utils\Mailer;
 use App\Model\Question;
 use Illuminate\Http\Request;
 
@@ -65,6 +66,15 @@ class QuizController extends Controller
                     $userAnswerCorrect[$question->id] = false; 
                 }
             }
+            
+            $mailer = new Mailer();
+
+            //Note : Mettre l'email de votre choix et ne pas oublier de configurer les constantes de .env
+            $mailer->setTo('claude.marcantoine2@gmail.com');
+            $mailer->setSubject('Votre participation au jeu oQuiz : '. $quiz->title);
+            $mailer->setBody('Votre score est de ' . $score . ' / '. $count);
+
+            $mailer->sendMail(); //envoi du mail
         }
 
         return view('quiz/show', [
